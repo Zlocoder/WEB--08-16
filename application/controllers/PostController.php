@@ -2,22 +2,30 @@
 
 namespace app\controllers;
 
+use app\models\forms\PostFilter;
 use app\models\forms\PostForm;
 use app\models\Post;
 use yii\data\ActiveDataProvider;
 
 class PostController extends \yii\web\Controller {
     public function actionIndex() {
+        $filter = new PostFilter();
+        $filter->load(\Yii::$app->request->get());
+
         $provider = new ActiveDataProvider([
-            'query' => Post::find(),
+            'query' => $filter->filterQuery,
             'pagination' => [
                 'pageSize' => 10,
                 'pageSizeParam' => false
+            ],
+            'sort' => [
+                'defaultOrder' => ['name' => SORT_ASC],
             ]
         ]);
         
         return $this->render('list', [
-            'provider' => $provider
+            'provider' => $provider,
+            'filter' => $filter
         ]);
     }
 
