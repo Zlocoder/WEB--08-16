@@ -24,10 +24,14 @@ $this->title = 'Список должностей';
     <div class="col-md-12">
         <?= GridView::widget([
             'dataProvider' => $provider,
+            'filterModel' => $filter,
             'summary' => 'Показано с {begin} по {end} из {totalCount}',
             'columns' => [
                 'id',
-                'name',
+                [
+                    'attribute' => 'name',
+                    'filterInputOptions' => ['class' => 'form-control input-sm']
+                ],
                 [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{update} {delete}'
