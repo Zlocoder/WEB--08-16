@@ -1,0 +1,26 @@
+1. Обновляем composer
+composer self-update
+
+2. Для работы с yii2 необходимо поставить плагин для composer
+composer global require "fxp/composer-asset-plugin"
+
+3. Переходим в консоли в папку проекта
+cd domains/localhost
+
+4. Устанавливаем базовое web-приложение на yii2
+composer create-project --prefer-dist yiisoft/yii2-app-basic
+
+5. При установке composer запрашивает токен авторизации на github.com
+Регистрируемся на github.com, если еще нет аккаунта
+Переходим по второй ссылке из сообщения в консоли
+https://github.com/settings/tokens/new?scopes=repo&description=Composer+on+CR475+2017-07-15+1748
+Генерируем и копируем токен в консоль (Ctrl + V, Enter)
+
+
+
+https://nix-tips.ru/yii2-api-guides/guide-ru-README.html Гайд на русском
+читать от начала до Безопасность->работа с паролями
+и последние разделы - виджеты и хелперы.
+
+http://www.yiiframework.com/doc-2.0/index.html
+
